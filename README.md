@@ -9,7 +9,7 @@ Exif 将拍摄的图片信息存放在 JPEG 图像文件头部，典型的有：
 
 ### 解析
 
- <img src="https://images.yinzige.com/2019-01-07-022101.png" width=80%/>
+ <img src="https://images.yinzige.com/2019-01-07-044233.png" width=80%/>
 
 
 
@@ -18,4 +18,4 @@ Exif 将拍摄的图片信息存放在 JPEG 图像文件头部，典型的有：
 - [Wiki: Exif](https://zh.wikipedia.org/wiki/EXIF)
 - [MIT: Description of Exif file format](https://www.media.mit.edu/pia/Research/deepview/exif.html)
 
-- [PDF: Exif  v2.2 standard document](https://www.exif.org/Exif2-2.PDF)
+- [Doc: Exif v2.2 standard document (pdf)](https://www.exif.org/Exif2-2.PDF)
