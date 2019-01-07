@@ -105,6 +105,8 @@ func (e *ExifReader) readExifData(r io.Reader) ([]byte, binary.ByteOrder, error)
 	return data, endian, nil
 }
 
+var uniqueTags = make(map[string]IFDTag) // 标签去重
+
 // 存储 tag
 func (e *ExifReader) SaveTags(tags []IFDTag) error {
 	var err error
@@ -115,8 +117,12 @@ func (e *ExifReader) SaveTags(tags []IFDTag) error {
 					return err
 				}
 			}
+			continue
 		}
-		e.MainTags = append(e.MainTags, tag)
+		if _, ok := uniqueTags[tag.Desc]; !ok {
+			e.MainTags = append(e.MainTags, tag)
+			uniqueTags[tag.Desc] = tag
+		}
 	}
 	return nil
 }
