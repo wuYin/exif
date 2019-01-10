@@ -44,6 +44,7 @@ func (t *TiffReader) ParseIFDTags(ifdOffset uint32, tag2desc map[uint16]string) 
 			vs = append(vs, fmt.Sprintf("%s", v))
 		} else {
 			for i := uint32(0); i < count; i++ {
+				offset += i * typeLen
 				buf := t.readBuf(offset, typeLen)
 				var v interface{}
 				switch tagType {
@@ -53,9 +54,9 @@ func (t *TiffReader) ParseIFDTags(ifdOffset uint32, tag2desc map[uint16]string) 
 					v = t.endian.Uint16(buf) // unsigned short
 				case 4:
 					v = t.endian.Uint32(buf) // unsigned long
-				case 5, 10:
-					up := t.endian.Uint32(buf)
-					down := t.endian.Uint32(t.readBuf(offset+4, 4)) // unsigned rational / signed rational
+				case 5:
+					up := t.endian.Uint32(buf[:4]) // unsigned rational
+					down := t.endian.Uint32(buf[4:])
 					v = big.NewRat(int64(up), int64(down))
 				case 8:
 					var x int16
