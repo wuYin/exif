@@ -9,7 +9,7 @@ Exif 将拍摄的图片信息存放在 JPEG 图像文件头部，典型的有：
 
 ### 解析
 
- <img src="https://images.yinzige.com/2019-01-07-044233.png" width=80%/>
+ <img src="https://images.yinzige.com/2019-01-10-022727.png" width=80%/>
 
 
 
